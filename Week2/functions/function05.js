@@ -25,4 +25,4 @@ function sqr(x) {
     }
     console.log(row);
 }
-sqr(5);
+sqr(10);

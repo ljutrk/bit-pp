@@ -14,5 +14,5 @@ function letterIteration(str, letter) {
     return location;
 }
 
-console.log(letterIteration("informatika", "q"));
+console.log(letterIteration("informatika", "z"));
 

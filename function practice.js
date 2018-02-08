@@ -284,17 +284,76 @@
 
 // console.log(firstNChars("laboratory", 6));
 
-function arrStrToArrNum(arr) {
-    var result = [];
-    for (let i = 0; i < arr.length; i++) {
-        if (typeof arr[i] !== "number") {
-            delete arr[i];
-    }
-    return arr;
-}
-}
+// function arrStrToArrNum(arr) {
+//     var result = [];
+//     var counter = 0;
+//     for (var i = 0; i < arr.length; i++) {
+//         if (typeof arr[i] === "string") {
+//             result[counter] = parseFloat(arr[i]);
+//             counter++;
+//         }
+//     }
+//     return result;
+// }
 
-console.log(arrStrToArrNum(["1", "21", undefined, "42", "1e+3", Infinity]));
+// console.log(arrStrToArrNum(["1", "21", undefined, "42", "1e+3", Infinity]));
+
+// function yearsUntilRetirement(yearOfBirth, gender) {
+//     var age = 2018 - yearOfBirth;
+//     var result;
+//     if (gender === "M" || gender === "m" && age < 65) {
+//         result = 65 - age;
+//     } else if (gender === "M" || gender === "m" && age > 65) {
+//         result = "You are already retied!";
+//     } else if (gender === "F" || gender === "f" && age < 60) {
+//         result = 60 - age;
+//     } else if (gender === "F" || gender === "f" && age > 60) {
+//         result = "You are already retied!";
+//     }
+//     return result;
+// }
+
+// console.log(yearsUntilRetirement(1988, "m"));
+
+// function yearsUntilRetirement(yearOfBirth, gender) {
+//     var age = 2018 - yearOfBirth;
+//     var result;
+
+//     if (gender === "M" || gender === "m") {
+//         if (age < 65 && age !== 0) {
+//             result = 65 - age;
+//         } else {
+//             result = "You are already retired!";
+//         }
+//     }
+//     if (gender === "F" || gender === "f") {
+//         if (age < 60 && age !== 0) {
+//             result = 60 - age;
+//         } else {
+//             result = "You are already retired!";
+//         }
+//     }
+//     return result;
+// }
+// console.log(yearsUntilRetirement(1988, "m"));
+
+// function numHum(num) {
+//     var result = "";
+//     if (num % 100 >= 11 && num % 100 <= 13) {
+//         result = num + "th";
+//     } else if (num % 10 === 1) {
+//         result = num + "st";
+//     } else if (num % 10 === 2) {
+//         result = num + "nd";
+//     } else if (num % 10 === 3) {
+//         result = num + "rd";
+//     } else {
+//         result = num + "th";
+//     }
+//     return result;
+// }
+
+// console.log(numHum(33322));
 
 
 

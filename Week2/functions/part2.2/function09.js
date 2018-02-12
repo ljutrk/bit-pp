@@ -3,7 +3,7 @@
 // "My random string", "_" -> "My_random_string"
 // "My random string", "+" -> "My+random+string"
 // "My random string" -> "My-random-string"
-
+"use strict"
 function separator(str, sep) {
     var blank = " ";
     var arr = [];

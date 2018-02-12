@@ -2,7 +2,7 @@
 
 // "My random string" -> ["M", "y", null, "r", "a"]
 // "Random" -> ["R", "a", "n", "d", "o", "m"]
-
+"use strict"
 function stringToArray(input) {
     var arr = [];
 

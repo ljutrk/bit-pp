@@ -1,5 +1,5 @@
 // 4. Write a function that calculates an arithmetic mean of four numbers.
- 
+"use strict"
 function artithmethicMean(a, b, c, d) {
     var num = (a + b + c + d) / 4;
     return num;

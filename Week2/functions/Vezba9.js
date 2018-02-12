@@ -1,5 +1,5 @@
 // 9. Write a function that calculates the sum of odd elements of a given array. 
-
+"use strict"
 function sumOffOddNumbers(arr) {
     var sum = 0;
     for (let i = 0; i < arr.length; i++) {

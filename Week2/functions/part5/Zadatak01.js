@@ -4,20 +4,16 @@
 "use strict"
 
 function vowelCount(str) {
+    str = str.toLowerCase();
 
     var counter = 0;
     for (var i = 0; i < str.length; i++) {
         switch (str[i]) {
             case "a":
-            case "A":
             case "e":
-            case "E":
             case "i":
-            case "I":
             case "o":
-            case "O":
             case "u":
-            case "U":
                 counter++;
                 break;
         }
@@ -25,4 +21,4 @@ function vowelCount(str) {
     return counter;
 }
 
-console.log(vowelCount("laborAtory"));
+console.log(vowelCount("labOrAtory is a scary place!"));

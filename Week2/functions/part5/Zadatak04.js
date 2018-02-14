@@ -7,7 +7,7 @@ function numberToArrOfDigits(num) {
     var numberArray = [];
 
     for (let i = 0; i < numberString.length; i++) {
-        numberArray[i] = parseFloat(numberString[i]);
+        numberArray[i] = parseInt(numberString[i]);
     }
     return numberArray;
 }

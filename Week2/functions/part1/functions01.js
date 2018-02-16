@@ -1,4 +1,5 @@
 // 1. Write a function that calculates the maximum of two given numbers.
+
 "use strict"
 function sum(a, b) {
     if (a > b) {

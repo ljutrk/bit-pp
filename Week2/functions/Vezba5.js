@@ -5,7 +5,7 @@
 //     *   *
 //     *   *
 //     *****
-
+"use strict"
 function square(size) {
     var row = "";
     var col = "*";

@@ -4,7 +4,7 @@
 //     " " -> true
 //     12 -> false
 //     false -> false
-
+"use strict"
 function isString(a) {
     if (a === "") {
         return true;

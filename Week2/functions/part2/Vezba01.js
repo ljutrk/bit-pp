@@ -2,7 +2,7 @@
 
 //     "My random string" -> true
 //     12 -> false
-
+"use strict"
 function isString(a) {
     if (typeof a === "string") {
         return true;

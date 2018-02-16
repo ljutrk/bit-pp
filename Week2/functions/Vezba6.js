@@ -3,7 +3,7 @@
 // * * * * *
 // * * *
 // * * * * * * *
-
+"use strict"
 function chart(a, b, c) {
     var concatinate = "";
     for (let i = 0; i < a; i++) {

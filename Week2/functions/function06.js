@@ -3,21 +3,21 @@
 //     * * * * *
 //     * * *
 //     * * * * * * *
-
+"use strict"
 var star1 = "";
 var star2 = "";
 var star3 = "";
 
 function chart(a, b, c) {
-    for (i = 0; i < a; i++) {
+    for (var i = 0; i < a; i++) {
         star1 += "*";
     }
     console.log(star1);
-    for (i = 0; i < b; i++) {
+    for (var i = 0; i < b; i++) {
         star2 += "*";
     }
     console.log(star2);
-    for (i = 0; i < c; i++) {
+    for (var i = 0; i < c; i++) {
         star3 += "*";
     }
     console.log(star3);

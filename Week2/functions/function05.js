@@ -5,7 +5,7 @@
 //     *   *
 //     *   *
 //     *****
-
+"use strict"
 var row = "";
 var col = "";
 var q = " ";
@@ -15,9 +15,9 @@ function sqr(x) {
         row += "*";
     }
     console.log(row);
-    for (i = 0; i < x - 2; i++) {
+    for (var i = 0; i < x - 2; i++) {
         col = "*";
-        for (j = 0; j < x - 2; j++) {
+        for (var j = 0; j < x - 2; j++) {
             col += q;
         }
         col += "*";

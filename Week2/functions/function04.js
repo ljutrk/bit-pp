@@ -1,5 +1,5 @@
 // 4. Write a function that calculates an arithmetic mean of four numbers.
-
+"use strict"
 function avg(a, b, c, d) {
 
     var x = (a + b + c + d) / 4

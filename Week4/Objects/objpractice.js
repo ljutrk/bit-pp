@@ -106,7 +106,7 @@
     var prod5 = newProducts("pavlaka", 60);
     var prod6 = newProducts("prasak za pecivo", 9);
 
-    var list1 = newShoppingList("sreda", new Date(2018, 2, 21));
+    var list1 = newShoppingList("sreda",    );
     var list2 = newShoppingList("cetvrtak", new Date(2018, 2, 22));
 
     list1.addShoppingList(prod1);
@@ -126,6 +126,8 @@
     console.log(list1.getAverageProductPrice());
     console.log(list1.getMostExpensiveProduct());
     console.log(weeklyList.getWeeklyList());
+    console.log(weeklyList.listOfShoppingLists);
+    
 
 })();
 

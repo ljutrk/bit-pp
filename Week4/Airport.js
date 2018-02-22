@@ -24,8 +24,8 @@
         this.seatobj = seatobj;
 
         this.getData = function () {
-            return seatobj.number + ", " + seatobj.category.toUpperCase() + ", " + personobj.name + ", " + personobj.surname;
-        };
+            return this.seatobj.getData() + ", " + this.personobj.getData();
+        }
     }
 
     function Flight(relation, date) {
@@ -35,7 +35,25 @@
 
         this.getData = function () {
             var date = this.date.getDate() + "." + (this.date.getMonth() + 1) + "." + this.date.getFullYear();
-            return date + ", " + this.relation;
+            var relArr = this.relation.split(" - ")
+            var relRes = "";
+            var temp = "";
+            relArr.forEach(function (el, i){
+                var tempArr = el.split("");
+                tempArr.forEach(function (element,i){
+                    element.toLowerCase();
+                    if (element !== "a" && element !== "e" && element !== "u" && element !== "o" && element !== "i"){
+                        temp += element.toUpperCase();
+                    }
+                })
+                relRes += temp[0] + temp[temp.length - 1];
+                temp = "";
+                if (i === 0){
+                    relRes += " - ";
+                }
+            })
+
+            return date + ", " + relRes;
         }
 
         this.addPassanger = function (passanger) {

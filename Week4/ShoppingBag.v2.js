@@ -1,3 +1,4 @@
+"use strict";
 (function () {
 
     function Product(name, price, expirationDate) {
@@ -99,8 +100,8 @@
     bag1.addItem(prod4);
     bag1.addItem(prod5);
 
-    var card1 = createPaymentCard(1000, 0, 0)
-    var card2 = createPaymentCard(500, 0, 0)
+    var card1 = createPaymentCard(1000, 0, 0);
+    var card2 = createPaymentCard(500, 0, 0);
 
     // console.log(card1.checkoutAndBuy(bag1, card1));
     console.log(card2.checkoutAndBuy(bag1, card2));

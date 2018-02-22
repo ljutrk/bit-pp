@@ -108,6 +108,7 @@
 
     myFestival.addProgram(prog1);
     myFestival.addProgram(prog2);
+console.log(mov1);
 
     console.log(myFestival.getData());
 })();

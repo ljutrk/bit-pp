@@ -12,16 +12,61 @@
 <body>
     <h1>Movie festival</h1>
     <div class="container">
-        <p>Please fill in the form</p>
-        <h3>Movie</h3>
-        <div>
-            
-        </div>
-        <div>
+        <p>Please fill in the form:</p>
+        <h2>Movie</h2>
+        <div class="div-movie">
+            <form class="form-movie">
+                <label>Title
+                    <br>
+                    <input type="text" id="movie-title" value="" placeholder="Title">
+                </label>
 
+                <label>Length (min)
+
+                    <input type="number" id="movie-length" value="" placeholder="Length in min">
+                </label>
+                <select id="genre-select">
+                    <option value="none">-</option>
+                    <option value="action">Action</option>
+                    <option value="drama">Drama</option>
+                    <option value="comedy">Comedy</option>
+                    <option value="thriller">Thriller</option>
+                    <option value="sci-fi">sci-fi</option>
+                    <option value="adventure">Adventure</option>
+                    <option value="fantasy">Fantasy</option>
+                </select>
+                <div class="error">
+
+                </div>
+                <input type="button" id="submitNewMovie" value="Create movie" name="submitNewMovie">
+                <div class="newMovieContainer">
+
+                </div>
+                <div class="totalTimeDiv">
+                    <p>All movies length: <span class="totalTime">-</span></p>
+                </div>
+            </form>
+        </div>
+        <h2>Program</h2>
+        <div class="div-program">
+            <form class="form-program">
+                <input type="date" id="program-date">
+                <input type="button" id="submitNewProgram" value="Create program" name="submitNewProgram">
+                <div class="newProgramContainer">
+
+                </div>
+                <p>Movie</p>
+                <select id="movie-select">
+                    <option value="none">-</option>
+                </select>
+                <p>Program</p>
+                <select id="program-select">
+                    <option value="none">-</option>
+                </select>
+                <input type="button" id="submitMovieToProgram" value="Add movie to program" name="submitMovieToProgram">
+            </form>
         </div>
     </div>
-
     <script src="js/form.js"></script>
 </body>
 

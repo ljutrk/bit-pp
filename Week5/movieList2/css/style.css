@@ -1,0 +1,80 @@
+/* * {
+    box-sizing: border-box;
+} */
+
+.container{
+    width: 600px;
+    margin: 0 auto;
+    border: 1px solid gray;
+    padding: 20px;
+}
+
+h1 {
+    text-align: center;
+}
+
+.div-movie {
+    border: 1px solid black;
+    padding: 20px;
+    overflow: auto;   
+}
+
+.div-program {
+    border: 1px solid black;
+    padding: 20px;   
+}
+
+input {
+    display: block;
+    margin: 10px 0;
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid rgba(0,0,0,0.2);
+    border-radius: 5px;
+    color: #272727;
+}
+
+select  {
+    margin-top: 5px;
+    margin-bottom: 10px;
+    width: 100%;
+    border: none;
+    padding: 3px;
+    background-color: #e6e6e6;
+}
+
+input[type="button"] {
+    background-color: #63cc63;
+    color: #fff;
+    padding: 5px;
+    font-size: 14px;
+}
+
+p {
+    margin: 0;
+    padding: 0;
+}
+
+.newMovieContainer p {
+    margin: 0;
+    padding: 6px 5px;
+}
+
+.newMovieContainer p:nth-of-type(even) {
+    background-color: rgb(236, 236, 236);
+}
+
+.totalTimeDiv p {
+    float: right;
+    margin-top: 20px;
+}
+
+.totalTimeDiv p span {
+    font-weight: bold;
+    color: blue;
+}
+
+.error {
+    color: red;
+}

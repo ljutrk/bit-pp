@@ -1,35 +1,35 @@
 function Person(name, surname, ID) {
     this.name = name;
     this.surname = surname;
-    this.ID = ID;
+    this.ID = Math.floor(Math.random() * (99999 - 10000) + 10000);
 }
 
 Person.prototype.getData = function () {
     return this.name + " " + this.surname + ", " + this.ID;
 }
 
-Employee.prototype = Object.create(Person.prototype);
 
-function Employee(name, surname, ID, employeeID, salary) {
-    Person.call(this, name, surname, ID);
+function Employee(name, surname, employeeID, salary) {
+    Person.call(this, name, surname);
     this.employeeID = employeeID;
     this.salary = salary;
 }
 
+Employee.prototype = Object.create(Person.prototype);
 Employee.prototype.constructor = Employee;
 
 Employee.prototype.getData = function () {
     return preson.getData() + ", " + this.employeeID + ", " + this.salary;
 }
 
-Professor.prototype = Object.create(Employee.prototype);
 
-function Professor(name, surname, ID, employeeID, salary, officeNumber) {
-    Employee.call(this, name, surname, ID, employeeID, salary)
+function Professor(name, surname, employeeID, salary, officeNumber) {
+    Employee.call(this, name, surname, employeeID, salary)
     this.officeNumber = officeNumber;
-
+    
 }
 
+Professor.prototype = Object.create(Employee.prototype);
 Professor.prototype.constructor = Professor;
 
 Professor.prototype.getData = function () {
@@ -50,16 +50,16 @@ Exam.prototype.getdata = function () {
     return this.subject + ", " + this.professor + ", " + date + ", " + this.grade;
 }
 
-Student.prototype = Object.create(Person.prototype);
 
-function Student(name, surname, ID, indexNumber, status) {
-    Person.call(this, name, surname, ID)
+function Student(name, surname, indexNumber, status) {
+    Person.call(this, name, surname)
     this.indexNumber = indexNumber;
     this.listOfPassedExams = [];
     this.listOfFailedExams = [];
     this.status = status;
 }
 
+Student.prototype = Object.create(Person.prototype);
 Student.prototype.constructor = Student;
 
 Student.prototype.addPassedExam = function (exam) {
@@ -82,11 +82,13 @@ function Faculty(name) {
 }
 
 Faculty.prototype.addProfessor = function (professor) {
-    this.listOfProfessors.push(professor);
+    var optionValue = this.listOfProfessors.push(professor) - 1;
+    return optionValue;
 }
 
 Faculty.prototype.addStudent = function (student) {
-    this.studentList.push(student);
+    var optionValue = this.studentList.push(student) - 1;
+    return optionValue;
 }
 
 var studentStatus = Object.freeze({
@@ -114,8 +116,8 @@ var facultyList = [];
 
 
 
-var studentList = [];
-var professorToExamCounter = 0;
+
+
 var studentToExamCounter = 0;
 var examList = [];
 
@@ -123,18 +125,18 @@ function createFaculty() {
 
     var facultyNameElement = document.querySelector("#facultyName");
     var facultyName = facultyNameElement.value;
-    var feedbackDiv = document.querySelector(".feedbackDiv");
+    var feedbackDivFaculty = document.querySelector(".feedbackDivFaculty");
     var faculty = new Faculty(facultyName);
     
 
-    if (!faculty.name) {
-        feedbackDiv.style = "color:red;";
-        feedbackDiv.textContent = "Please enter faculty name!";
+    if (!facultyName) {
+        feedbackDivFaculty.style = "color:red;";
+        feedbackDivFaculty.textContent = "Please enter faculty name!";
         return;
     }
 
-    feedbackDiv.style = "color:green;";
-    feedbackDiv.textContent = "Success!"
+    feedbackDivFaculty.style = "color:green;";
+    feedbackDivFaculty.textContent = "Success!"
     facultyList.push(faculty);
     
 
@@ -144,6 +146,7 @@ function createFaculty() {
 }
 
 function createProfessor() {
+
     var professorNameElement = document.querySelector("#professorName");
     var professorName = professorNameElement.value;
     var professorSurnameElement = document.querySelector("#professorSurname");
@@ -158,19 +161,51 @@ function createProfessor() {
     var examProfessorDropdownElement = document.querySelector("#examProfessorDropdown");
     var examProfessorDropdown = examProfessorDropdownElement.value;
 
-    var ID = Math.floor(Math.random() * (99999 - 10000) + 10000);
-    var person = new Person(professorName, professorSurname, ID);
-    var employee = new Employee(professorName, professorSurname, ID, professorEmployeeID, professorSalary);
-    var professor = new Professor(professorName, professorSurname, ID, professorEmployeeID, professorSalary, professorOfficeNumber);
+    var feedbackDivProfessor = document.querySelector(".feedbackDivProfessor");
 
-    addProfessorToExam(examProfessorDropdownElement, professor);
-    professorToExamCounter++;
-    facultyList[0].addProfessor(professor); //!!!!!!!!!
+    // var ID = 
+    // var person = new Person(professorName, professorSurname, ID);
+    // var employee = new Employee(professorName, professorSurname, ID, professorEmployeeID, professorSalary);
+    var professor = new Professor(professorName, professorSurname, professorEmployeeID, professorSalary, professorOfficeNumber);
+
+    
+
+    
+    
+    if (!professorName) {
+        feedbackDivProfessor.style = "color:red;";
+        feedbackDivProfessor.textContent = "Please enter professor name!";
+        return;
+    } else if (!professorSurname) {
+        feedbackDivProfessor.style = "color:red;";
+        feedbackDivProfessor.textContent = "Please enter professor surname!";
+        return;
+    } else if (!professorEmployeeID) {
+        feedbackDivProfessor.style = "color:red;";
+        feedbackDivProfessor.textContent = "Please enter professor employee ID!";
+        return;
+    } else if (!professorSalary) {
+        feedbackDivProfessor.style = "color:red;";
+        feedbackDivProfessor.textContent = "Please enter professor salary!";
+        return;
+    } else if (!professorOfficeNumber) {
+        feedbackDivProfessor.style = "color:red;";
+        feedbackDivProfessor.textContent = "Please enter professor office number!";
+        return;
+    }
+
+    feedbackDivProfessor.style = "color:green;";
+    feedbackDivProfessor.textContent = "Success!"
+
+    var optionValue = facultyList[0].addProfessor(professor); //!!!!!!!!!
+    addProfessorToExam(examProfessorDropdownElement, professor, optionValue);
+    //professorToExamCounter++;
+
 }
 
-function addProfessorToExam(examProfessorDropdownElement, professor) {
+function addProfessorToExam(examProfessorDropdownElement, professor, optionValue) {
     var newOption = document.createElement("option");
-    newOption.value = professorToExamCounter;
+    newOption.value = optionValue;
     newOption.textContent = professor.getData();
     examProfessorDropdownElement.add(newOption);
 }
@@ -185,21 +220,43 @@ function createStudent() {
     var studentStatusElement = document.querySelector("#studentStatus");
     var studentStatus = studentStatusElement.value;
 
+    var professorFormElement = document.querySelector(".professorForm");
+
     var examStudentDropdownElement = document.querySelector("#examStudentDropdown");
     var examStudentDropdown = examStudentDropdownElement.value;
 
-    var ID = Math.floor(Math.random() * (99999 - 10000) + 10000);
+    var feedbackDivStudent = document.querySelector(".feedbackDivStudent");
 
-    var person = new Person(studentName, studentSurname, ID);
-    var student = new Student(studentName, studentSurname, ID, studentIndexNumber, studentStatus);
-    addStudentToExam(examStudentDropdownElement, student)
-    studentToExamCounter++;
-    facultyList[0].addStudent(student);
+    var student = new Student(studentName, studentSurname, studentIndexNumber, studentStatus);
+    
+    if (!studentName) {
+        feedbackDivStudent.style = "color:red;";
+        feedbackDivStudent.textContent = "Please enter student name!";
+        return;
+    } else if (!studentSurname) {
+        feedbackDivStudent.style = "color:red;";
+        feedbackDivStudent.textContent = "Please enter student surname!";
+        return;
+    } else if (!studentIndexNumber) {
+        feedbackDivStudent.style = "color:red;";
+        feedbackDivStudent.textContent = "Please enter student index number!";
+        return;
+    } else if (studentStatus === "none") {
+        feedbackDivStudent.style = "color:red;";
+        feedbackDivStudent.textContent = "Please enter student status!";
+        return;
+    }
+    feedbackDivStudent.style = "color:green;";
+    feedbackDivStudent.textContent = "Success!"
+
+
+    var optionValue = facultyList[0].addStudent(student);
+    addStudentToExam(examStudentDropdownElement, student, optionValue)
 }
 
-function addStudentToExam(examStudentDropdownElement, student) {
+function addStudentToExam(examStudentDropdownElement, student, optionValue) {
     var newOption = document.createElement("option");
-    newOption.value = studentToExamCounter;
+    newOption.value = optionValue;
     newOption.textContent = student.getData();
     examStudentDropdownElement.add(newOption);
 }
@@ -219,7 +276,35 @@ function createExam() {
     var professor = facultyList[0].listOfProfessors[examProfessorDropdown];
     var student = facultyList[0].studentList[examStudentDropdown];
 
+    var feedbackDivExam = document.querySelector(".feedbackDivExam");
+
     var exam = new Exam(examSubject, professor, student, examDate, examGradeDropdown);
+    
+
+    if (!examSubject) {
+        feedbackDivExam.style = "color:red;";
+        feedbackDivExam.textContent = "Please enter subject!";
+        return;
+    } else if (examProfessorDropdown === "none") {
+        feedbackDivExam.style = "color:red;";
+        feedbackDivExam.textContent = "Please choose professor!";
+        return;
+    } else if (examStudentDropdown === "none") {
+        feedbackDivExam.style = "color:red;";
+        feedbackDivExam.textContent = "Please choose student!";
+        return;
+    } else if (!examDate) {
+        feedbackDivExam.style = "color:red;";
+        feedbackDivExam.textContent = "Please enter exam status!";
+        return;
+    } else if (examGradeDropdown === "none") {
+        feedbackDivExam.style = "color:red;";
+        feedbackDivExam.textContent = "Please enter exam status!";
+        return;
+    }
+    feedbackDivexam.style = "color:green;";
+    feedbackDivexam.textContent = "Success!"
+
     if (examGradeDropdown === "5") {
         student.addFailedExam(exam);
     } else {

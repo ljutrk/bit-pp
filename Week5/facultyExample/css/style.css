@@ -8,6 +8,7 @@ div {
     position: absolute;
     bottom: 0px;
     right: 0px;
+    z-index: 1;
 }
 
 select {
@@ -18,7 +19,8 @@ select {
     width: 168px;
 }
 
-.feedbackDiv {
+.feedbackDivFaculty, .feedbackDivProfessor, .feedbackDivStudent, .feedbackDivExam {
     color: black;
     border: 0px;
+    z-index: 0;
 }

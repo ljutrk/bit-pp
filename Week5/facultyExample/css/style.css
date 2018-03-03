@@ -1,0 +1,24 @@
+div {
+    border: 1px solid black;
+    width: 600px;
+    position: relative;
+}
+
+.addButton {
+    position: absolute;
+    bottom: 0px;
+    right: 0px;
+}
+
+select {
+    width: 173px;
+}
+
+#examDate {
+    width: 168px;
+}
+
+.feedbackDiv {
+    color: black;
+    border: 0px;
+}

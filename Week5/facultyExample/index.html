@@ -6,17 +6,126 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
+    <div class="faculty">
+        <form action="">
+            <label>Faculty Name
+                <br>
+                <input id="facultyName" type="text" value="">
+            </label>
+            <input id="addFaculty" class="addButton" type="button" value="Create Faculty">
+        </form>
+        <div class="feedbackDiv">
 
-    <input type="text">
-    <input type="button" value="Create Faculty">
+        </div>
+    </div>
 
-    <select name="" id="">
-        <option value="none">-</option>
-    </select>
+    <div class="professor">
+        <form action="">
+            <label>Name
+                <br>
+                <input id="professorName" type="text" value="">
+                <br>
+            </label>
+            <label>Surname
+                <br>
+                <input id="professorSurname" type="text" value="">
+                <br>
+            </label>
+            <label>EmployeeID
+                <br>
+                <input id="professorEmployeeID" type="number" value="">
+                <br>
+            </label>
+            <label>Salary
+                <br>
+                <input id="professorSalary" type="number" value="">
+                <br>
+            </label>
+            <label>Office Number
+                <br>
+                <input id="professorOfficeNumber" type="number" value="">
+                <br>
+            </label>
+            <input id="addProfessor" class="addButton" type="button" value="Add Professor">
+        </form>
+    </div>
+
+    <div class="student">
+        <form action="">
+            <label>Name
+                <br>
+                <input id="studentName" type="text" value="">
+                <br>
+            </label>
+            <label>Surname
+                <br>
+                <input id="studentSurname" type="text" value="">
+                <br>
+            </label>
+            <label>Index Number
+                <br>
+                <input id="studentIndexNumber" type="number" value="">
+                <br>
+            </label>
+            <label>Student Status
+                <br>
+                <select id="studentStatus" name="" id="">
+                    <br>
+                    <option value="none">-</option>
+                    <option value="Regular">Regular</option>
+                    <option value="Remote">Remote</option>
+                    <option value="Graduated">Graduated</option>
+                </select>
+            </label>
+            <input id="addStudent" class="addButton" type="button" value="Add Student">
+        </form>
+    </div>
+
+    <div class="exam">
+        <form action="">
+            <label>Subject
+                <br>
+                <input id="examSubject" type="text" value="">
+                <br>
+            </label>
+            <label>Professor
+                <br>
+                <select id="examProfessorDropdown" name="">
+                    <option value="none">-</option>
+                </select>
+            </label>
+            <br>
+            <label>Student
+                <br>
+                <select id="examStudentDropdown" name="">
+                    <option value="none">-</option>
+                </select>
+            </label>
+            <br>
+            <label>Exam Date
+                <br>
+                <input id="examDate" type="date" name="">
+            </label>
+            <br>
+            <label>Grade
+                <br>
+                <select id="examGradeDropdown" name="">
+                    <option value="none">-</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7">7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                </select>
+            </label>
+            <input id="addExam" class="addButton" type="button" value="Add Exam">
+        </form>
+    </div>
 
     <script src="js/script.js">
     </script>

@@ -26,7 +26,7 @@ Employee.prototype.getData = function () {
 function Professor(name, surname, employeeID, salary, officeNumber) {
     Employee.call(this, name, surname, employeeID, salary)
     this.officeNumber = officeNumber;
-    
+
 }
 
 Professor.prototype = Object.create(Employee.prototype);
@@ -71,7 +71,14 @@ Student.prototype.addFailedExam = function (exam) {
 }
 
 Student.prototype.getData = function () {
-    return this.indexNumber + ", " + this.status;
+    var averageGrade = 0;
+    var sumOfgrades = 0;
+    this.listOfPassedExams.forEach(function (element) {
+        sumOfgrades += parseInt(element.grade);
+    })
+    averageGrade = parseFloat((sumOfgrades / this.listOfPassedExams.length).toFixed(2));
+
+    return this.indexNumber + ", " + this.name + " " + this.surname + ", " + averageGrade;
 }
 
 function Faculty(name) {
@@ -127,7 +134,7 @@ function createFaculty() {
     var facultyName = facultyNameElement.value;
     var feedbackDivFaculty = document.querySelector(".feedbackDivFaculty");
     var faculty = new Faculty(facultyName);
-    
+
 
     if (!facultyName) {
         feedbackDivFaculty.style = "color:red;";
@@ -138,10 +145,10 @@ function createFaculty() {
     feedbackDivFaculty.style = "color:green;";
     feedbackDivFaculty.textContent = "Success!"
     facultyList.push(faculty);
-    
 
 
-    
+
+
     facultyNameElement.value = "";
 }
 
@@ -168,10 +175,10 @@ function createProfessor() {
     // var employee = new Employee(professorName, professorSurname, ID, professorEmployeeID, professorSalary);
     var professor = new Professor(professorName, professorSurname, professorEmployeeID, professorSalary, professorOfficeNumber);
 
-    
 
-    
-    
+
+
+
     if (!professorName) {
         feedbackDivProfessor.style = "color:red;";
         feedbackDivProfessor.textContent = "Please enter professor name!";
@@ -228,7 +235,7 @@ function createStudent() {
     var feedbackDivStudent = document.querySelector(".feedbackDivStudent");
 
     var student = new Student(studentName, studentSurname, studentIndexNumber, studentStatus);
-    
+
     if (!studentName) {
         feedbackDivStudent.style = "color:red;";
         feedbackDivStudent.textContent = "Please enter student name!";
@@ -257,7 +264,7 @@ function createStudent() {
 function addStudentToExam(examStudentDropdownElement, student, optionValue) {
     var newOption = document.createElement("option");
     newOption.value = optionValue;
-    newOption.textContent = student.getData();
+    newOption.textContent = student.indexNumber + "," + student.name + " " + student.surname;
     examStudentDropdownElement.add(newOption);
 }
 
@@ -279,8 +286,8 @@ function createExam() {
     var feedbackDivExam = document.querySelector(".feedbackDivExam");
 
     var exam = new Exam(examSubject, professor, student, examDate, examGradeDropdown);
-    
 
+    if()
     if (!examSubject) {
         feedbackDivExam.style = "color:red;";
         feedbackDivExam.textContent = "Please enter subject!";
@@ -295,15 +302,15 @@ function createExam() {
         return;
     } else if (!examDate) {
         feedbackDivExam.style = "color:red;";
-        feedbackDivExam.textContent = "Please enter exam status!";
+        feedbackDivExam.textContent = "Please enter exam date!";
         return;
     } else if (examGradeDropdown === "none") {
         feedbackDivExam.style = "color:red;";
-        feedbackDivExam.textContent = "Please enter exam status!";
+        feedbackDivExam.textContent = "Please enter exam grade!";
         return;
     }
-    feedbackDivexam.style = "color:green;";
-    feedbackDivexam.textContent = "Success!"
+    feedbackDivExam.style = "color:green;";
+    feedbackDivExam.textContent = "Success!"
 
     if (examGradeDropdown === "5") {
         student.addFailedExam(exam);

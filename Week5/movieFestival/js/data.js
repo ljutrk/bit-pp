@@ -1,12 +1,9 @@
 var dataModule = (function () {
-    var data = {
-        movieList: []
-    }
+    console.log("data log!");
 
-    function addMovieToMovieList(movieInput) {
-        var movie = new Movie(movieInput.title, movieInput.length, movieInput.genre);
-        data.movieList.push(movie);
-        return movie;
+    var movieData = {
+        movieList: [],
+        totalMovieLength: 0
     }
 
     function Movie(title, genre, length) {
@@ -17,14 +14,37 @@ var dataModule = (function () {
     }
 
     Movie.prototype.getInfo = function () {
-        return this.title + ", " + this.genre + ", " + this.length + "min."
+        return this.title + ", " + this.genreAbr() + ", " + this.length + "min."
     }
 
+    Movie.prototype.genreAbr = function () {
+        var firstLetter = this.genre.charAt(0);
+        var lastLetter = this.genre.charAt(this.genre.length - 1);
+        var genreAbr = firstLetter + lastLetter;
+        return genreAbr.toUpperCase();
+    }
 
-    console.log("data log!");
+    function calculateTotalLength() {
+        var totalLength = 0;
+        movieData.movieList.forEach(function (element) {
+            totalLength += element.length;
+        })
+        movieData.totalMovieLength = totalLength;
+    }
+
+    function getTotalLength() {
+        calculateTotalLength();
+        return movieData.totalMovieLength;
+    }
+
+    function addMovieToMovieList(movieInput) {
+        var movie = new Movie(movieInput.title, movieInput.genre, movieInput.length);
+        movieData.movieList.push(movie);
+        return movie;
+    }
 
     return {
-        movie: movie,
         createNewMovie: addMovieToMovieList,
+        getTotalLength: getTotalLength
     }
 })();

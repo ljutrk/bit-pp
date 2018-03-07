@@ -1,32 +1,38 @@
 var ctrlModule = (function (ui, data) {
     console.log("controller log!");
 
-    
-    var createMovieButton = document.querySelector("#submitNewMovie");
-    
+
     function setupEventListeners() {
-        
+        var DOM = ui.getDOMStrings();
+        var createMovieButton = document.querySelector(DOM.createMovieButton);
         createMovieButton.addEventListener("click", function () {
-            var input = ui.getInput();
             console.log("create new movie log!");
-            console.log(input);
-            console.log(ui.clearInput);
-            data.createNewMovie(input)
-            console.log(data.movie.getInfo);
-            // ui.clearInput();
-            
+            var input = ui.getInput();
+            if (!input.title || !input.length || input.genre === "none") {
+                ui.showError(input);
+                return;
+            }
+            movie = data.createNewMovie(input);
+            ui.formReset();
+            ui.addMovieToDiv();
+            updateTotalLength();
         })
     }
-    
-    
+
+    function updateTotalLength() {
+        totalMovieLength = data.getTotalLength();
+        ui.displayTotalLength(totalMovieLength);
+    }
+
     function init() {
         setupEventListeners();
-        
+
     }
 
     return {
         init: init
     }
+
 })(UIModule, dataModule);
 
 ctrlModule.init();

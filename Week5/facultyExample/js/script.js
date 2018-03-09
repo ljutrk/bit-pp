@@ -287,7 +287,6 @@ function createExam() {
 
     var exam = new Exam(examSubject, professor, student, examDate, examGradeDropdown);
 
-    if()
     if (!examSubject) {
         feedbackDivExam.style = "color:red;";
         feedbackDivExam.textContent = "Please enter subject!";

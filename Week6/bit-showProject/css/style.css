@@ -1,0 +1,32 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.full{
+    width: 100%;
+}
+
+.container{
+    width: 80%;
+}
+
+.blue {
+    background-color: rgb(82, 89, 189);
+}
+
+.search {
+    float: right;
+    display: inline-block;
+}
+
+.center{
+    text-align: center;
+    margin: 0 auto;
+}
+
+.header{
+    float: left;
+    display: inline-block;    
+}

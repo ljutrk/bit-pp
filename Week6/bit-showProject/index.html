@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+        crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="col-8 offset-2">
+        <div class="row blue">
+            <div class="col-10 offset-1 full">
+                <div class="col-6">
+                    <p class="header">BitShow</p>
+
+                    <input class="search" type="text" name="" placeholder="search">
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-8 offset-2">
+                <div class="row">
+                    <p class="center">Popular Shows</p>
+                </div>
+                <div id="popularShows" class="row">
+
+                </div>
+            </div>
+        </div>
+        <div class="row blue">
+            <div class="col-8 offset-2">
+                <p class="center">Copyright Bit Student 2017</p>
+            </div>
+        </div>
+    </div>
+
+
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
+    <script src="js/data.js"></script>
+    <script src="js/ui.js"></script>
+    <script src="js/controller.js"></script>
+    <script>$(ctrlModule.init())</script>
+</body>
+
+</html>

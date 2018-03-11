@@ -1,11 +1,13 @@
 var dataModule = (function () {
     console.log("data log!");
 
-    // var showData = {
-    //     showList: []
-    // }
+    var showData = {
+        showList: []
+    }
 
-    showList = [];
+    const constants = {
+        baseurl: "http://api.tvmaze.com/shows"
+    }
 
     class Show {
         constructor(title, image, id, rating) {
@@ -16,27 +18,18 @@ var dataModule = (function () {
         }
     }
 
-    function getData() {
-        var request = $.ajax({
-            url: `http://api.tvmaze.com/shows`,
-        });
-        request.done((response) => {
-            // console.log(response)
+    const createShows = (response) => {
 
-            showList = response.map(show => {
-                const {name, image, id, rating} = show;
-                return new Show(name, image.original, id, rating.average);
-            })
-            
-            return showList;
+        const mappedResponse = response.map(show => {
+            const { name, image, id, rating } = show;
+            return new Show(name, image.medium, id, rating.average);
         })
-        
-        return showList;
+        return mappedResponse;
     }
 
     return {
-        getData: getData,
-        // showData: showData
-        showList: showList
+        showData: showData,
+        constants: constants,
+        createShows: createShows
     }
 })();

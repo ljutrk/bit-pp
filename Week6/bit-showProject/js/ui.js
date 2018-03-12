@@ -8,9 +8,9 @@ console.log("ui log!");
                 var showID = shows[i].id;
 
                 $div = $("<div>").addClass("showDiv").attr("id", showID);
-                $img = $("<img>").attr("src", showImg);
+                $img = $("<img>").attr("src", showImg).attr("id", showID);
                 $($div).append($img);
-                $p = $("<p>").append(showName);
+                $p = $("<p>").append(showName).attr("id", showID);
                 $($div).append($p);
                 $('#popularShows').append($div);
             }

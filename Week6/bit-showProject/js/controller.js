@@ -14,9 +14,9 @@ var ctrlModule = (function (data, ui) {
         //     console.log(event);
         // })
         $(function () {
-            $('.showDiv').on("click", function (event) {
-                window.location = "location.href='showInfoPage.html'";
-                console.log(event);
+            $(document).on("click", function (event) {
+                window.location = "showInfoPage.html";
+                console.log(event.target.id);
 
             });
 

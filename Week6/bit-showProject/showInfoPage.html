@@ -16,36 +16,52 @@
     <div class="col-8 offset-2">
         <div class="row blue">
             <div class="col-10 offset-1 full">
-                <p class="header">BitShow</p>
+                <p class="header white">BitShow</p>
                 <input class="search" type="text" name="" placeholder="search">
             </div>
         </div>
-        <div class="row">
-            <div class="col-10 offset-1">
-                <div class="row">
-                    <p class="center">Popular Shows</p>
-                </div>
-                <div class="row">
-                    <div id="popularShows" class="col-12">
-
+        <!-- Data! -->
+        <div class="col-10 offset-1 full">
+            <div class="row">
+                <div class="col-10 offset-1">
+                    <div class="row">
+                        <p id="showName" class="center">
+                            <!-- showID Name! -->
+                        </p>
                     </div>
+                    <div class="row">
+                        <div id="showContent" class="col-12">
+
+                        </div>
+                    </div>
+                </div>
+                <div id="showDetails" class="row">
+                        <!-- showID Details -->
                 </div>
             </div>
         </div>
-    <div class="row blue">
-        <div class="col-8 offset-2">
-            <p class="center footer">Copyright Bit Student 2017</p>
+        <!-- Data END! -->
+        <div class="row blue">
+            <div class="col-8 offset-2">
+                <p class="center footer white">Copyright Bit Student 2017</p>
+            </div>
         </div>
     </div>
-    </div>
-
 
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
         crossorigin="anonymous"></script>
-    <script src="js/data.js"></script>
+    <script src="js/showPageInfoShowData.js"></script>
+    <script src="js/showPageInfoCastData.js"></script>
+    <script src="js/showPageInfoSeasonsData.js"></script>
+    <script src="js/showPageInfoUi.js"></script>
+    <script src="js/showPageInfoController.js"></script>
+    <script>
+        $(ctrlModule.init());
+    </script>
+    <!-- <script src="js/data.js"></script>
     <script src="js/ui.js"></script>
     <script src="js/controller.js"></script>
-    <script>$(ctrlModule.init());</script>
+    <script>$(ctrlModule.init());</script> -->
 </body>
 
 </html>

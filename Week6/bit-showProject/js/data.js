@@ -1,5 +1,4 @@
 var dataModule = (function () {
-    // console.log("data log!");
 
     class Show {
         constructor(title, image, id, rating) {

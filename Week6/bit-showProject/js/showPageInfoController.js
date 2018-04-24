@@ -1,9 +1,25 @@
-var ctrlModule = (function (showData, seasonsData, castData, ui) {
-    // console.log("showPageInfoController log!");
+var ctrlModule = (function (data, showData, seasonsData, castData, ui, searchData) {
 
     const showID = localStorage.getItem("index");
     const init = () => {
+        showPageInfo();
         getAll();
+        getData();
+        search();
+        removeSearchDiv();
+    }
+
+    const showPageInfo = () => {
+            $(document).on("click", function (event) {
+                const eventID = parseInt(event.target.id);
+
+                if (isNaN(eventID) === false) {
+                    localStorage.setItem("index", event.target.id)
+                    window.location = "showInfoPage.html";
+                }
+
+            });
+
     }
 
     const getAll = () => {
@@ -12,13 +28,9 @@ var ctrlModule = (function (showData, seasonsData, castData, ui) {
         })
 
         request.done((response) => {
-            // console.log(response);
             const show = showData.createShow(response);
-            // console.log(show);
             const cast = castData.createCast(response._embedded.cast);
-            // console.log(cast);
             const seasons = seasonsData.createSeasons(response._embedded.seasons);
-            // console.log(seasons);
             ui.showShowsOnPage(show);
             ui.showCastOnPage(cast);
             ui.showSeasonsOnPage(seasons);
@@ -26,10 +38,61 @@ var ctrlModule = (function (showData, seasonsData, castData, ui) {
 
     }
 
+    const getData = () => {
+        const request = $.ajax({
+            url: `http://api.tvmaze.com/shows`
+        })
+
+        request.done((response) => {
+            const shows = data.createShows(response);
+            ui.showShowsOnPage(shows);
+        })
+    }
+
+    const search = () => {
+
+        var word = "";
+        $('.search').keydown(event => {
+            if (event.originalEvent.key === "Backspace") {
+                word = word.slice(0, -1);
+            }
+        })
+
+        $('.search').keypress(function (event) {
+            if (event.originalEvent.code === "Enter" || event.originalEvent.code === "NumpadEnter") {
+                const request = $.ajax({
+                    url: `http://api.tvmaze.com/search/shows?q=${word}`
+                })
+
+                request.done((response) => {
+                    const searchShows = searchData.createSearchData(response);
+                    ui.showSearchResult(response);
+                })
+
+                word = "";
+                $('.search').val("")
+
+            } else {
+                let char = event.originalEvent.key;
+                word += char;
+
+            }
+        })
+
+    }
+
+    const removeSearchDiv = () => {
+
+        $div = $("searchedShowsDivInner")
+        $(document).on("click", function (event) {
+            if ($div) {
+                $div.remove()
+            }       
+        })
+    }
+
     return {
         init
     }
 
-})(showDataModule, seasonsDataModule, castDataModule, uiModule);
-
-// ctrlModule.init();
+})(dataModule, showDataModule, seasonsDataModule, castDataModule, uiModule, searchDataModule);

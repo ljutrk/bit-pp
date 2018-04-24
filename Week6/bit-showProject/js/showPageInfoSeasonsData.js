@@ -1,5 +1,4 @@
 var seasonsDataModule = (function () {
-    // console.log("showPageInfoData - Seasons log!");
 
     class Seasons {
         constructor(premiereDate, endDate) {

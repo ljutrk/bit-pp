@@ -1,8 +1,6 @@
 var uiModule = (function () {
-    // console.log("showPageInfoIi log!");
 
     const showShowsOnPage = (show) => {
-        // console.log(show);
 
         var showName = show.title;
         var showImg = show.image;
@@ -12,20 +10,23 @@ var uiModule = (function () {
         $showInfo.html(showInfo);
         $ShowName = $('#showName');
         $ShowName.text(showName);
-        $showContent = $('#showContent');
+        $showImgDiv = $('#showImgDiv');
         $showIMG = $('<img>').attr("src", showImg).attr("id", "showIMG");
-        $showContent.append($showIMG);
+        $showImgDiv.append($showIMG);
     }
 
     const showCastOnPage = (cast) => {
-        // console.log(cast);
 
         $showContent = $('#showContent');
-        $cast = $('<p>').text("Cast");
+        $cast = $('<p>').text("Cast").css("font-weight", "bold");
         $showContent.append($cast);
         $ul = $('<ul>').attr("id", "castUl");
-        
-        for (let i = 0; i < 7; i++) {
+
+        if (cast.length > 6) {
+            cast.length = 6
+        }
+
+        for (let i = 0; i < cast.length; i++) {
             castMember = cast[i].person.name;
             $li = $('<li>').attr("class", "castLi");
             $li.text(castMember);
@@ -35,10 +36,9 @@ var uiModule = (function () {
     }
 
     const showSeasonsOnPage = (seasons) => {
-        // console.log(seasons);
 
         $showContent = $('#showContent');
-        $seasons = $('<p>').text(`Seasons(${seasons.length})`);
+        $seasons = $('<p>').text(`Seasons(${seasons.length})`).css("font-weight", "bold");
         $showContent.append($seasons);
         $ul = $('<ul>').attr("id", "seasonsUl");
 
@@ -52,9 +52,30 @@ var uiModule = (function () {
         $showContent.append($ul)
     }
 
+    const showSearchResult = (searchedShows) => {
+        if (searchedShows.length > 10) {
+            searchedShows.length = 10;
+        }
+        if ($div) {
+            $div.remove()
+        }
+
+        $ssd = $('.searchedShowsDiv');
+        $ssd.css("left", $('.search').position().left + "px")
+        $div = $("<div>").addClass("searchedShowsDivInner");
+        for (let i = 0; i < searchedShows.length; i++) {
+            let showName = searchedShows[i].show.name;
+            let showid = searchedShows[i].show.id;
+            $p = $('<p>').attr("id", showid).text(showName);
+            $div.append($p);
+        }
+        $ssd.append($div);
+    }
+
     return {
         showShowsOnPage,
         showCastOnPage,
-        showSeasonsOnPage
+        showSeasonsOnPage,
+        showSearchResult
     }
 })();

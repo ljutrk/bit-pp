@@ -1,5 +1,4 @@
 var showDataModule = (function () {
-    // console.log("showPageInfoData - Show log!");
 
     class Show {
         constructor(title, image, summary) {

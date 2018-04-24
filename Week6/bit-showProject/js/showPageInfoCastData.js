@@ -1,5 +1,4 @@
 var castDataModule = (function () {
-    // console.log("showPageInfoData - Cast log!");
 
     class Cast {
         constructor(person, character) {
@@ -15,7 +14,6 @@ var castDataModule = (function () {
             return new Cast(person, character)
         })
     }
-
 
     return {
         createCast
